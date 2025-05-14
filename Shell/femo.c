@@ -5,9 +5,10 @@
 #define BUFFER_SIZE 10240
 #define READ_ERROR -1
 
-int main(int argc, char* argv[]) {
-	char input[BUFFER_SIZE];
+int femtoshell_main(int argc, char *argv[]) {
 
+	char input[BUFFER_SIZE];
+    int last_status=0;
 	while (1) {
 		printf("%s$ ", argv[0]);
 		if (fgets(input, BUFFER_SIZE, stdin) == NULL) {
@@ -20,7 +21,8 @@ int main(int argc, char* argv[]) {
 				exit(READ_ERROR);
 			}
 		}
-
+		
+        printf("\n");
 		// remove trailing newline
 		input[strcspn(input, "\n")] = 0;
 
@@ -44,11 +46,13 @@ int main(int argc, char* argv[]) {
 				argument = next_argument;
 			}
 			printf("\n");
+			last_status=0; // echo succeeded
 		}
 		else {
 			printf("Invalid command\n");
+			last_status=1; // failure
 		}
 	}
 
-	return 0;
+	return last_status;
 }
