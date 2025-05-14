@@ -39,7 +39,8 @@ char* getValueByKey(char** localVars, int lengthLocalVars, char* requiredKey);
 char* replaceByPointers(char* pre_str, char* replace_start, char* post_str);
 
 
-int main(int argc, char* argv[]) {
+int microshell_main(int argc, char *argv[]) {
+
 	int last_status = 0; // Track the last command status
 
 	int sizeLocalVars = 64; // initial array size
