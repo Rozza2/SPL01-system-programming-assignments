@@ -34,7 +34,8 @@ char* getValueByKey(char** localVars, int lengthLocalVars, char* requiredKey);
 char* replaceByPointers(char* pre_str, char* replace_start, char* post_str);
 
 
-int main(int argc, char* argv[]) {
+int nanoshell_main(int argc, char *argv[]) {
+
 	int last_status = 0; // Track the last command status
 
 	int sizeLocalVars = 64; // initial array size
@@ -46,6 +47,9 @@ int main(int argc, char* argv[]) {
 	int lengthLocalVars = 0;
 
 	while (1) {
+	   
+
+	    
 		int is_interactive = isatty(STDIN_FILENO);
 
 		printf("Pico shell prompt > ");
